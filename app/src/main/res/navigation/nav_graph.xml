@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_enigma">
+
+    <fragment
+        android:id="@+id/navigation_enigma"
+        android:name="com.zybooks.enigmamachine.EnigmaFragment"
+        android:label="@string/title_Enigma"
+        tools:layout="@layout/fragment_enigma" />
+
+    <fragment
+        android:id="@+id/navigation_plugboard"
+        android:name="com.zybooks.enigmamachine.PlugboardFragment"
+        android:label="@string/title_Plugboard"
+        tools:layout="@layout/fragment_plugboard" />
+
+    <fragment
+        android:id="@+id/navigation_rotor"
+        android:name="com.zybooks.enigmamachine.RotorFragment"
+        android:label="@string/title_Rotor"
+        tools:layout="@layout/fragment_rotor" />
 
 </navigation>
