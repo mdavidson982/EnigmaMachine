@@ -8,6 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="electric_yellow">#FFEB3B</color>
-    <color name="lamp_gray">#4B4B4B</color>
-    <color name="background">#E0E0E0FF</color>
+    <color name="lamp_gray">#FF4B4B4B</color>
+    <color name="background">#FF9E9E9E</color>
+    <color name="lamp_background">#FFBDBDBD</color>
+    <color name="result_background">#FFE5D3B3</color>
 </resources>

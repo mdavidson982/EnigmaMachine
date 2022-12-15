@@ -40,6 +40,26 @@
         android:layout_toEndOf="@id/rotor2_vector"/>
 
 
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="135dp"
+        android:background="@color/lamp_background"
+        android:layout_marginTop="200dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="7dp"
+        android:background="@color/black"
+        android:layout_marginTop="200dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="7dp"
+        android:background="@color/black"
+        android:layout_marginTop="330dp"/>
+
     <!--First Row of letters-->
         <!--QWERTYUIOP-->
     <ImageView
@@ -48,7 +68,9 @@
         android:layout_height="40dp"
         android:src="@drawable/circle_q"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="240dp"
+        android:layout_centerInParent="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="210dp"
         android:layout_marginLeft="5dp"
         app:tint="@color/lamp_gray" />
 
@@ -141,7 +163,7 @@
         android:layout_height="40dp"
         android:src="@drawable/circle_a"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="250dp"
         android:layout_marginLeft="25dp"
         app:tint="@color/lamp_gray"/>
 
@@ -226,7 +248,7 @@
         android:layout_height="40dp"
         android:src="@drawable/circle_z"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="290dp"
         android:layout_marginLeft="65dp"
         app:tint="@color/lamp_gray"/>
 
@@ -286,205 +308,301 @@
 
 
 
+
     <!--BUTTON LETTERS-->
     <!--First Row of letters-->
     <!--QWERTYUIOP-->
-    <ImageView
+    <ImageButton
         android:id="@+id/key_q"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_q"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="450dp"
+        android:layout_marginTop="350dp"
         android:layout_marginLeft="5dp"/>
 
-    <ImageView
+    <ImageButton
         android:id="@+id/key_w"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_w"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_toRightOf="@id/key_q"
         android:layout_alignBottom="@id/key_q"/>
-    <ImageView
+    <ImageButton
         android:id="@+id/key_e"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_e"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_toRightOf="@id/key_w"
         android:layout_alignBottom="@id/key_w"/>
-    <ImageView
+    <ImageButton
         android:id="@+id/key_r"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_r"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_toRightOf="@id/key_e"
         android:layout_alignBottom="@id/key_e"/>
-    <ImageView
+    <ImageButton
         android:id="@+id/key_t"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_t"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_toRightOf="@id/key_r"
         android:layout_alignBottom="@id/key_r"/>
-    <ImageView
+    <ImageButton
         android:id="@+id/key_y"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_y"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_toRightOf="@id/key_t"
         android:layout_alignBottom="@id/key_t"/>
-    <ImageView
+    <ImageButton
         android:id="@+id/key_u"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_u"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_toRightOf="@id/key_y"
         android:layout_alignBottom="@id/key_y"/>
-    <ImageView
+    <ImageButton
         android:id="@+id/key_i"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_i"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_toRightOf="@id/key_u"
         android:layout_alignBottom="@id/key_u"/>
-    <ImageView
+    <ImageButton
         android:id="@+id/key_o"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_o"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_toRightOf="@id/key_i"
         android:layout_alignBottom="@id/key_i"/>
-    <ImageView
+    <ImageButton
         android:id="@+id/key_p"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_p"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_toRightOf="@id/key_o"
         android:layout_alignBottom="@id/key_o"/>
 
     <!--Second Row of Letters-->
     <!--ASDFGHJKL-->
 
-    <ImageView
+    <ImageButton
         android:id="@+id/key_a"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_a"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="500dp"
+        android:layout_marginTop="390dp"
         android:layout_marginLeft="25dp"/>
 
-    <ImageView
+    <ImageButton
         android:id="@+id/key_s"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_s"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_toRightOf="@id/key_a"
         android:layout_alignBottom="@id/key_a"/>
-    <ImageView
+    <ImageButton
         android:id="@+id/key_d"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_d"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_toRightOf="@id/key_s"
         android:layout_alignBottom="@id/key_s"/>
-    <ImageView
+    <ImageButton
         android:id="@+id/key_f"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_f"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_toRightOf="@id/key_d"
         android:layout_alignBottom="@id/key_d"/>
-    <ImageView
+    <ImageButton
         android:id="@+id/key_g"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_g"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_toRightOf="@id/key_f"
         android:layout_alignBottom="@id/key_f"/>
-    <ImageView
+    <ImageButton
         android:id="@+id/key_h"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_h"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_toRightOf="@id/key_g"
         android:layout_alignBottom="@id/key_g"/>
-    <ImageView
+    <ImageButton
         android:id="@+id/key_j"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_j"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_toRightOf="@id/key_h"
         android:layout_alignBottom="@id/key_h"/>
-    <ImageView
+    <ImageButton
         android:id="@+id/key_k"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_k"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_toRightOf="@id/key_j"
         android:layout_alignBottom="@id/key_j"/>
-    <ImageView
+    <ImageButton
         android:id="@+id/key_l"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_l"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_toRightOf="@id/key_k"
         android:layout_alignBottom="@id/key_k"/>
 
     <!--Third Row of Letters-->
     <!--ZXCVBNM-->
-    <ImageView
+    <ImageButton
         android:id="@+id/key_z"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_z"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="550dp"
+        android:layout_marginTop="430dp"
         android:layout_marginLeft="65dp"/>
-    <ImageView
+    <ImageButton
         android:id="@+id/key_x"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_x"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_toRightOf="@id/key_z"
         android:layout_alignBottom="@id/key_z"/>
-    <ImageView
+    <ImageButton
         android:id="@+id/key_c"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_c"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_toRightOf="@id/key_x"
         android:layout_alignBottom="@id/key_x"/>
-    <ImageView
+    <ImageButton
         android:id="@+id/key_v"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_v"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_toRightOf="@id/key_c"
         android:layout_alignBottom="@id/key_c"/>
-    <ImageView
+    <ImageButton
         android:id="@+id/key_b"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_b"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_toRightOf="@id/key_v"
         android:layout_alignBottom="@id/key_v"/>
-    <ImageView
+    <ImageButton
         android:id="@+id/key_n"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_n"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_toRightOf="@id/key_b"
         android:layout_alignBottom="@id/key_b"/>
-    <ImageView
+    <ImageButton
         android:id="@+id/key_m"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:src="@drawable/circle_m"
+        android:padding="0dp"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/background"
         android:layout_toRightOf="@id/key_n"
         android:layout_alignBottom="@id/key_n"/>
 
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/result_background"
+        android:layout_marginTop="480dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="7dp"
+        android:background="@color/black"
+        android:layout_marginTop="480dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="7dp"
+        android:background="@color/black"
+        android:layout_marginTop="550dp"/>
 
 
 
