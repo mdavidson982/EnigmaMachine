@@ -1,14 +1,495 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".EnigmaFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/Enigma_Fragment" />
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:src="@drawable/enigmamachinebadge"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"/>
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/rotor1_vector"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/square_a"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="120dp"
+        android:layout_marginLeft="100dp"/>
+
+    <ImageView
+        android:id="@+id/rotor2_vector"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/square_a"
+        android:layout_alignBottom="@id/rotor1_vector"
+        android:layout_toEndOf="@id/rotor1_vector"/>
+
+    <ImageView
+        android:id="@+id/rotor3_vector"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/square_a"
+        android:layout_alignBottom="@id/rotor2_vector"
+        android:layout_toEndOf="@id/rotor2_vector"/>
+
+
+    <!--First Row of letters-->
+        <!--QWERTYUIOP-->
+    <ImageView
+        android:id="@+id/lamp_q"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_q"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="240dp"
+        android:layout_marginLeft="5dp"
+        app:tint="@color/lamp_gray" />
+
+    <ImageView
+        android:id="@+id/lamp_w"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_w"
+        android:layout_toRightOf="@id/lamp_q"
+        android:layout_alignBottom="@id/lamp_q"
+        app:tint="@color/lamp_gray"/>
+
+    <ImageView
+        android:id="@+id/lamp_e"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_e"
+        android:layout_toRightOf="@id/lamp_w"
+        android:layout_alignBottom="@id/lamp_w"
+        app:tint="@color/lamp_gray"/>
+
+    <ImageView
+        android:id="@+id/lamp_r"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_r"
+        android:layout_toRightOf="@id/lamp_e"
+        android:layout_alignBottom="@id/lamp_e"
+        app:tint="@color/lamp_gray"/>
+
+    <ImageView
+        android:id="@+id/lamp_t"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_t"
+        android:layout_toRightOf="@id/lamp_r"
+        android:layout_alignBottom="@id/lamp_r"
+        app:tint="@color/lamp_gray"/>
+
+    <ImageView
+        android:id="@+id/lamp_y"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_y"
+        android:layout_toRightOf="@id/lamp_t"
+        android:layout_alignBottom="@id/lamp_t"
+        app:tint="@color/lamp_gray"/>
+    <ImageView
+        android:id="@+id/lamp_u"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_u"
+        android:layout_toRightOf="@id/lamp_y"
+        android:layout_alignBottom="@id/lamp_y"
+        app:tint="@color/lamp_gray"/>
+
+    <ImageView
+        android:id="@+id/lamp_i"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_i"
+        android:layout_toRightOf="@id/lamp_u"
+        android:layout_alignBottom="@id/lamp_u"
+        app:tint="@color/lamp_gray"/>
+
+    <ImageView
+        android:id="@+id/lamp_o"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_o"
+        android:layout_toRightOf="@id/lamp_i"
+        android:layout_alignBottom="@id/lamp_i"
+        app:tint="@color/lamp_gray"/>
+
+    <ImageView
+        android:id="@+id/lamp_p"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_p"
+        android:layout_toRightOf="@id/lamp_o"
+        android:layout_alignBottom="@id/lamp_o"
+        app:tint="@color/lamp_gray"/>
+
+    <!--Second Row of Letters-->
+        <!--ASDFGHJKL-->
+
+    <ImageView
+        android:id="@+id/lamp_a"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_a"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="280dp"
+        android:layout_marginLeft="25dp"
+        app:tint="@color/lamp_gray"/>
+
+    <ImageView
+        android:id="@+id/lamp_s"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_s"
+        android:layout_toRightOf="@id/lamp_a"
+        android:layout_alignBottom="@id/lamp_a"
+        app:tint="@color/lamp_gray"/>
+
+    <ImageView
+        android:id="@+id/lamp_d"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_d"
+        android:layout_toRightOf="@id/lamp_s"
+        android:layout_alignBottom="@id/lamp_s"
+        app:tint="@color/lamp_gray"/>
+
+    <ImageView
+        android:id="@+id/lamp_f"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_f"
+        android:layout_toRightOf="@id/lamp_d"
+        android:layout_alignBottom="@id/lamp_d"
+        app:tint="@color/lamp_gray"/>
+
+    <ImageView
+        android:id="@+id/lamp_g"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_g"
+        android:layout_toRightOf="@id/lamp_f"
+        android:layout_alignBottom="@id/lamp_f"
+        app:tint="@color/lamp_gray"/>
+
+    <ImageView
+        android:id="@+id/lamp_h"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_h"
+        android:layout_toRightOf="@id/lamp_g"
+        android:layout_alignBottom="@id/lamp_g"
+        app:tint="@color/lamp_gray"/>
+
+    <ImageView
+        android:id="@+id/lamp_j"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_j"
+        android:layout_toRightOf="@id/lamp_h"
+        android:layout_alignBottom="@id/lamp_h"
+        app:tint="@color/lamp_gray"/>
+
+    <ImageView
+        android:id="@+id/lamp_k"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_k"
+        android:layout_toRightOf="@id/lamp_j"
+        android:layout_alignBottom="@id/lamp_j"
+        app:tint="@color/lamp_gray"/>
+
+    <ImageView
+        android:id="@+id/lamp_l"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_l"
+        android:layout_toRightOf="@id/lamp_k"
+        android:layout_alignBottom="@id/lamp_k"
+        app:tint="@color/lamp_gray"/>
+
+
+    <!--Third Row of Letters-->
+        <!--ZXCVBNM-->
+    <ImageView
+        android:id="@+id/lamp_z"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_z"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="320dp"
+        android:layout_marginLeft="65dp"
+        app:tint="@color/lamp_gray"/>
+
+    <ImageView
+        android:id="@+id/lamp_x"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_x"
+        android:layout_toRightOf="@id/lamp_z"
+        android:layout_alignBottom="@id/lamp_z"
+        app:tint="@color/lamp_gray"/>
+
+    <ImageView
+        android:id="@+id/lamp_c"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_c"
+        android:layout_toRightOf="@id/lamp_x"
+        android:layout_alignBottom="@id/lamp_x"
+        app:tint="@color/lamp_gray"/>
+
+    <ImageView
+        android:id="@+id/lamp_v"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_v"
+        android:layout_toRightOf="@id/lamp_c"
+        android:layout_alignBottom="@id/lamp_c"
+        app:tint="@color/lamp_gray"/>
+
+    <ImageView
+        android:id="@+id/lamp_b"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_b"
+        android:layout_toRightOf="@id/lamp_v"
+        android:layout_alignBottom="@id/lamp_v"
+        app:tint="@color/lamp_gray"/>
+
+    <ImageView
+        android:id="@+id/lamp_n"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_n"
+        android:layout_toRightOf="@id/lamp_b"
+        android:layout_alignBottom="@id/lamp_b"
+        app:tint="@color/lamp_gray"/>
+
+    <ImageView
+        android:id="@+id/lamp_m"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_m"
+        android:layout_toRightOf="@id/lamp_n"
+        android:layout_alignBottom="@id/lamp_n"
+        app:tint="@color/lamp_gray"/>
+
+
+
+    <!--BUTTON LETTERS-->
+    <!--First Row of letters-->
+    <!--QWERTYUIOP-->
+    <ImageView
+        android:id="@+id/key_q"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_q"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="450dp"
+        android:layout_marginLeft="5dp"/>
+
+    <ImageView
+        android:id="@+id/key_w"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_w"
+        android:layout_toRightOf="@id/key_q"
+        android:layout_alignBottom="@id/key_q"/>
+    <ImageView
+        android:id="@+id/key_e"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_e"
+        android:layout_toRightOf="@id/key_w"
+        android:layout_alignBottom="@id/key_w"/>
+    <ImageView
+        android:id="@+id/key_r"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_r"
+        android:layout_toRightOf="@id/key_e"
+        android:layout_alignBottom="@id/key_e"/>
+    <ImageView
+        android:id="@+id/key_t"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_t"
+        android:layout_toRightOf="@id/key_r"
+        android:layout_alignBottom="@id/key_r"/>
+    <ImageView
+        android:id="@+id/key_y"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_y"
+        android:layout_toRightOf="@id/key_t"
+        android:layout_alignBottom="@id/key_t"/>
+    <ImageView
+        android:id="@+id/key_u"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_u"
+        android:layout_toRightOf="@id/key_y"
+        android:layout_alignBottom="@id/key_y"/>
+    <ImageView
+        android:id="@+id/key_i"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_i"
+        android:layout_toRightOf="@id/key_u"
+        android:layout_alignBottom="@id/key_u"/>
+    <ImageView
+        android:id="@+id/key_o"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_o"
+        android:layout_toRightOf="@id/key_i"
+        android:layout_alignBottom="@id/key_i"/>
+    <ImageView
+        android:id="@+id/key_p"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_p"
+        android:layout_toRightOf="@id/key_o"
+        android:layout_alignBottom="@id/key_o"/>
+
+    <!--Second Row of Letters-->
+    <!--ASDFGHJKL-->
+
+    <ImageView
+        android:id="@+id/key_a"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_a"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="500dp"
+        android:layout_marginLeft="25dp"/>
+
+    <ImageView
+        android:id="@+id/key_s"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_s"
+        android:layout_toRightOf="@id/key_a"
+        android:layout_alignBottom="@id/key_a"/>
+    <ImageView
+        android:id="@+id/key_d"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_d"
+        android:layout_toRightOf="@id/key_s"
+        android:layout_alignBottom="@id/key_s"/>
+    <ImageView
+        android:id="@+id/key_f"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_f"
+        android:layout_toRightOf="@id/key_d"
+        android:layout_alignBottom="@id/key_d"/>
+    <ImageView
+        android:id="@+id/key_g"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_g"
+        android:layout_toRightOf="@id/key_f"
+        android:layout_alignBottom="@id/key_f"/>
+    <ImageView
+        android:id="@+id/key_h"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_h"
+        android:layout_toRightOf="@id/key_g"
+        android:layout_alignBottom="@id/key_g"/>
+    <ImageView
+        android:id="@+id/key_j"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_j"
+        android:layout_toRightOf="@id/key_h"
+        android:layout_alignBottom="@id/key_h"/>
+    <ImageView
+        android:id="@+id/key_k"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_k"
+        android:layout_toRightOf="@id/key_j"
+        android:layout_alignBottom="@id/key_j"/>
+    <ImageView
+        android:id="@+id/key_l"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_l"
+        android:layout_toRightOf="@id/key_k"
+        android:layout_alignBottom="@id/key_k"/>
+
+    <!--Third Row of Letters-->
+    <!--ZXCVBNM-->
+    <ImageView
+        android:id="@+id/key_z"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_z"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="550dp"
+        android:layout_marginLeft="65dp"/>
+    <ImageView
+        android:id="@+id/key_x"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_x"
+        android:layout_toRightOf="@id/key_z"
+        android:layout_alignBottom="@id/key_z"/>
+    <ImageView
+        android:id="@+id/key_c"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_c"
+        android:layout_toRightOf="@id/key_x"
+        android:layout_alignBottom="@id/key_x"/>
+    <ImageView
+        android:id="@+id/key_v"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_v"
+        android:layout_toRightOf="@id/key_c"
+        android:layout_alignBottom="@id/key_c"/>
+    <ImageView
+        android:id="@+id/key_b"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_b"
+        android:layout_toRightOf="@id/key_v"
+        android:layout_alignBottom="@id/key_v"/>
+    <ImageView
+        android:id="@+id/key_n"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_n"
+        android:layout_toRightOf="@id/key_b"
+        android:layout_alignBottom="@id/key_b"/>
+    <ImageView
+        android:id="@+id/key_m"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/circle_m"
+        android:layout_toRightOf="@id/key_n"
+        android:layout_alignBottom="@id/key_n"/>
+
+
+
+
+
+
+
+
+
+</RelativeLayout>
