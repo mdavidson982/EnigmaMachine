@@ -1,64 +1,71 @@
 package com.zybooks.enigmamachine;
 
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link EnigmaFragment#newInstance} factory method to
+ * Use the  factory method to
  * create an instance of this fragment.
  */
 public class EnigmaFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private ImageButton keyboard;
+    private ArrayList<ImageView> lampboardAL = new ArrayList<>();
+    private ArrayList<ImageView> RotorAL = new ArrayList<>();
+    private ImageView lampboard;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public EnigmaFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment EnigmaFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static EnigmaFragment newInstance(String param1, String param2) {
-        EnigmaFragment fragment = new EnigmaFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    private int LampOnColor;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_enigma, container, false);
+        int buttonID;
+        View rootView = inflater.inflate(R.layout.fragment_enigma, container, false);
+        RelativeLayout keyButton = rootView.findViewById(R.id.parent);
+
+        for (int i = 0; i < keyButton.getChildCount(); i++) {
+            Log.i("OnKeyboardClick", String.valueOf(keyButton.getChildAt(i)));
+            if(keyButton.getChildAt(i) instanceof AppCompatImageView && i <= 3) {
+                ImageView rotorImage = (ImageView) keyButton.getChildAt(i);
+                RotorAL.add(rotorImage);
+            }
+            if(keyButton.getChildAt(i) instanceof AppCompatImageView && i > 3){
+                ImageView lampboard = (ImageView) keyButton.getChildAt(i);
+                lampboardAL.add(lampboard);
+            }else if(keyButton.getChildAt(i) instanceof AppCompatImageButton){
+                ImageButton keyboard = (ImageButton) keyButton.getChildAt(i);
+                keyboard.setOnClickListener(this::onKeyboardClick);
+            }
+        }
+        LampOnColor = ContextCompat.getColor(this.requireActivity(), R.color.electric_yellow);
+        return rootView;
     }
+
+    private void onKeyboardClick(View view){
+        Log.i("OnKeyboardClick", String.valueOf(view.getId()));
+        if(view.getId() == R.id.key_q){
+            lampboardAL.get(0).setColorFilter(LampOnColor);
+        }
+
+    }
+
 }
