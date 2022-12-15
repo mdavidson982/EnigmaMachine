@@ -11,11 +11,11 @@
         android:label="@string/title_Enigma"
         tools:layout="@layout/fragment_enigma" />
 
-    <fragment
+    <!--<fragment
         android:id="@+id/navigation_plugboard"
         android:name="com.zybooks.enigmamachine.PlugboardFragment"
         android:label="@string/title_Plugboard"
-        tools:layout="@layout/fragment_plugboard" />
+        tools:layout="@layout/fragment_plugboard" />-->
 
     <fragment
         android:id="@+id/navigation_rotor"
