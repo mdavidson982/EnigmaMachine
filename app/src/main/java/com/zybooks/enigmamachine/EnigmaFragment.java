@@ -1,12 +1,14 @@
 package com.zybooks.enigmamachine;
 
-import android.graphics.drawable.Drawable;
+import static android.view.animation.AnimationUtils.*;
+
 import android.media.Image;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
@@ -20,6 +22,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -34,19 +39,22 @@ public class EnigmaFragment extends Fragment {
     private final String ROTOR_STATE = "rotorState";
     private String rotorString;
     private ArrayList<ImageView> lampboardAL = new ArrayList<>();
-    private ArrayList<ImageView> RotorAL = new ArrayList<>();
+    private final ArrayList<ImageView> RotorAL = new ArrayList<>();
     private ImageView lampboard;
     private Rotor rotor1, rotor2, rotor3, reflect;
     private Animation blink;
     private int LampOnColor, LampOffColor;
+    private ArrayList<TextView> encryptionTape = new ArrayList<>();
+    private RelativeLayout keyButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        int buttonID;
         View rootView = inflater.inflate(R.layout.fragment_enigma, container, false);
-        RelativeLayout keyButton = rootView.findViewById(R.id.parent);
+        keyButton = rootView.findViewById(R.id.parent);
+
+
 
         for (int i = 0; i < keyButton.getChildCount(); i++) {
             //Log.i("OnKeyboardClick", String.valueOf(keyButton.getChildAt(i)));
@@ -61,8 +69,12 @@ public class EnigmaFragment extends Fragment {
                 ImageButton keyboard = (ImageButton) keyButton.getChildAt(i);
                 keyboard.setOnClickListener(this::onKeyboardClick);
             }
+            if(keyButton.getChildAt(i) instanceof AppCompatTextView){
+                TextView tape = (TextView) keyButton.getChildAt(i);
+                encryptionTape.add(tape);
+            }
         }
-        blink = AnimationUtils.loadAnimation(getActivity().getApplicationContext(),R.anim.blink);
+        blink = loadAnimation(getActivity().getApplicationContext(),R.anim.blink);
         LampOnColor = ContextCompat.getColor(this.requireActivity(), R.color.electric_yellow);
 
         if(savedInstanceState == null){
@@ -83,6 +95,28 @@ public class EnigmaFragment extends Fragment {
     }
 
     @Override
+    public void onResume(){
+        super.onResume();
+
+
+        Log.i("OnResume", "OnResume running.");
+        for (int i = 0; i < keyButton.getChildCount(); i++) {
+            //Log.i("OnKeyboardClick", String.valueOf(keyButton.getChildAt(i)));
+            if(keyButton.getChildAt(i) instanceof AppCompatImageView && i <= 3) {
+                ImageView rotorImage = (ImageView) keyButton.getChildAt(i);
+                RotorAL.add(rotorImage);
+            }
+            if(keyButton.getChildAt(i) instanceof AppCompatImageView && i > 3){
+                ImageView lampboard = (ImageView) keyButton.getChildAt(i);
+                lampboardAL.add(lampboard);
+            }else if(keyButton.getChildAt(i) instanceof AppCompatImageButton){
+                ImageButton keyboard = (ImageButton) keyButton.getChildAt(i);
+                keyboard.setOnClickListener(this::onKeyboardClick);
+            }
+        }
+    }
+    
+    @Override
     public void onSaveInstanceState(@NonNull Bundle outState){
         super.onSaveInstanceState(outState);
         rotorString = String.valueOf(rotor1.getOption()) + String.valueOf(rotor1.getSetting());
@@ -94,7 +128,7 @@ public class EnigmaFragment extends Fragment {
 
 
     private void onKeyboardClick(@NonNull View view){
-        Log.i("OnKeyboardClick", String .valueOf(view.getId()));
+        //Log.i("OnKeyboardClick", String .valueOf(view.getId()));
         if(view.getId() == R.id.key_a){
             //Log.i("AfterKeyboardClick", String.valueOf(lampboardAL.get(0)));
             encodeLetter('a');
@@ -221,23 +255,23 @@ public class EnigmaFragment extends Fragment {
         }
 
         letter = rotor3.encode(letter);
-        Log.i("R3", String.valueOf(letter));
+        //Log.i("R3", String.valueOf(letter));
         letter = rotor2.encode(letter);
-        Log.i("R2", String.valueOf(letter));
+        //Log.i("R2", String.valueOf(letter));
         letter = rotor1.encode(letter);
-        Log.i("R1", String.valueOf(letter));
+        //Log.i("R1", String.valueOf(letter));
         letter = reflect.encode(letter);
-        Log.i("RR", String.valueOf(letter));
+        //Log.i("RR", String.valueOf(letter));
         letter = rotor1.reverseEncode(letter);
-        Log.i("R1R", String.valueOf(letter));
+        //Log.i("R1R", String.valueOf(letter));
         letter = rotor2.reverseEncode(letter);
-        Log.i("R2R", String.valueOf(letter));
+        //Log.i("R2R", String.valueOf(letter));
         letter = rotor3.reverseEncode(letter);
-        Log.i("R3R", String.valueOf(letter));
+        //Log.i("R3R", String.valueOf(letter));
 
         int asciiletter = letter;
         asciiletter -= 65;
-        Log.i("EncodeLetter", String.valueOf(asciiletter));
+        //Log.i("EncodeLetter", String.valueOf(asciiletter));
         switch (asciiletter){
             case 0://a
                 lampboardAL.get(10).setColorFilter(LampOnColor);
