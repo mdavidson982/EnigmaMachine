@@ -46,6 +46,7 @@ public class EnigmaFragment extends Fragment {
     private Rotor rotor1, rotor2, rotor3, reflect;
     private Animation blink;
     private int LampOnColor, LampOffColor;
+    private int priorLetter = 10;
     private ArrayList<TextView> encryptionTape = new ArrayList<>();
     private RelativeLayout keyButton;
 
@@ -60,8 +61,10 @@ public class EnigmaFragment extends Fragment {
         keyButton = rootView.findViewById(R.id.parent);
         Log.i("onCreateView", "This is the onCreateView");
         SharedPreferences sharedPref = this.requireActivity().getPreferences(Context.MODE_PRIVATE);
+        String configuration = sharedPref.getString("configuration", "2,0,1,0,0,0");
+        String[] configurationArray = configuration.split(",");
 
-        for (int i = 0; i < keyButton.getChildCount(); i++) {
+        for (int i = 1; i < keyButton.getChildCount(); i++) {
             //Log.i("OnKeyboardClick", String.valueOf(keyButton.getChildAt(i)));
             if(keyButton.getChildAt(i) instanceof AppCompatImageView && i <= 3) {
                 ImageView rotorImage = (ImageView) keyButton.getChildAt(i);
@@ -79,13 +82,19 @@ public class EnigmaFragment extends Fragment {
                 encryptionTape.add(tape);
             }
         }
+
+        RotorAL.get(0).setImageResource(rotorLetter((Integer.valueOf(configurationArray[1]))));
+        RotorAL.get(1).setImageResource(rotorLetter((Integer.valueOf(configurationArray[3]))));
+        RotorAL.get(2).setImageResource(rotorLetter((Integer.valueOf(configurationArray[5]))));
+
         blink = loadAnimation(getActivity().getApplicationContext(),R.anim.blink);
         LampOnColor = ContextCompat.getColor(this.requireActivity(), R.color.electric_yellow);
+        LampOffColor = ContextCompat.getColor(this.requireActivity(), R.color.lamp_gray);
 
         if(savedInstanceState == null){
-            rotor1 = new Rotor(1,1);
-            rotor2 = new Rotor(2,1);
-            rotor3 = new Rotor(3,1);
+            rotor1 = new Rotor((Integer.valueOf(configurationArray[0])+1),(Integer.valueOf(configurationArray[1])) +1);
+            rotor2 = new Rotor((Integer.valueOf(configurationArray[2])+1),(Integer.valueOf(configurationArray[3])) +1);
+            rotor3 = new Rotor((Integer.valueOf(configurationArray[4])+1),(Integer.valueOf(configurationArray[5])) +1);
             reflect = new Rotor(4,1);
         }else{
             String rotorState = savedInstanceState.getString(ROTOR_STATE);
@@ -277,12 +286,19 @@ public class EnigmaFragment extends Fragment {
             }else {
                 rotor2.turnRotor();
             }
+            RotorAL.get(2).setImageResource(rotorLetter(rotor3.getSetting()));
+            RotorAL.get(1).setImageResource(rotorLetter(rotor2.getSetting()));
+            RotorAL.get(0).setImageResource(rotorLetter(rotor1.getSetting()));
+
         } else {
             rotor3.turnRotor();
             if(rotor2.isswitchCase()) {
                 rotor2.turnRotor();
                 rotor1.turnRotor();
             }
+            RotorAL.get(2).setImageResource(rotorLetter(rotor3.getSetting()));
+            RotorAL.get(1).setImageResource(rotorLetter(rotor2.getSetting()));
+            RotorAL.get(0).setImageResource(rotorLetter(rotor1.getSetting()));
         }
 
         letter = rotor3.encode(letter);
@@ -305,110 +321,248 @@ public class EnigmaFragment extends Fragment {
         //Log.i("EncodeLetter", String.valueOf(asciiletter));
         switch (asciiletter){
             case 0://a
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(10).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "a");
+                priorLetter = 10;
                 break;
             case 1://b
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(23).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "b");
+                priorLetter = 23;
                 break;
             case 2://c
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(21).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "c");
+                priorLetter = 21;
                 break;
             case 3://d
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(12).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "d");
+                priorLetter = 12;
                 break;
             case 4://e
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(2).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "e");
+                priorLetter = 2;
                 break;
             case 5://f
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(13).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "f");
+                priorLetter = 13;
                 break;
             case 6://g
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(14).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "g");
+                priorLetter = 14;
                 break;
             case 7://h
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(15).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "h");
+                priorLetter = 15;
                 break;
             case 8://i
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(7).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "i");
+                priorLetter = 7;
                 break;
             case 9://j
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(16).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "j");
+                priorLetter = 16;
                 break;
             case 10://k
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(17).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "k");
+                priorLetter = 17;
                 break;
             case 11://l
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(18).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "l");
+                priorLetter = 18;
                 break;
             case 12://m
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(25).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "m");
+                priorLetter = 25;
                 break;
             case 13://n
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(24).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "n");
+                priorLetter = 24;
                 break;
             case 14://0
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(8).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "o");
+                priorLetter = 8;
                 break;
             case 15://p
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(9).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "p");
+                priorLetter = 9;
                 break;
             case 16://q
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(0).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "q");
+                priorLetter = 0;
                 break;
             case 17://r
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(3).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "r");
+                priorLetter = 3;
                 break;
             case 18://s
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(11).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "s");
+                priorLetter = 11;
                 break;
             case 19://t
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(4).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "t");
+                priorLetter = 4;
                 break;
             case 20://u
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(6).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "u");
+                priorLetter = 6;
                 break;
             case 21://v
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(22).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "v");
+                priorLetter = 22;
                 break;
             case 22://w
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(1).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "w");
+                priorLetter = 1;
                 break;
             case 23://x
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(20).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "x");
+                priorLetter = 20;
                 break;
             case 24:
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(5).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "y");
+                priorLetter = 5;
                 break;
             case 25:
+                lampboardAL.get(priorLetter).setColorFilter(LampOffColor);
                 lampboardAL.get(19).setColorFilter(LampOnColor);
                 encryptionTape.get(1).setText(encryptionTape.get(1).getText() + "z");
+                priorLetter = 19;
                 break;
         }
 
+    }
+    private int rotorLetter(int i){
+        int returnedId;
+        switch (i){
+            case 0:
+                returnedId = R.drawable.square_a;
+                break;
+            case 1:
+                returnedId = R.drawable.square_b;
+                break;
+            case 2:
+                returnedId = R.drawable.square_c;
+                break;
+            case 3:
+                returnedId = R.drawable.square_d;
+                break;
+            case 4:
+                returnedId = R.drawable.square_e;
+                break;
+            case 5:
+                returnedId = R.drawable.square_f;
+                break;
+            case 6:
+                returnedId = R.drawable.square_g;
+                break;
+            case 7:
+                returnedId = R.drawable.square_h;
+                break;
+            case 8:
+                returnedId = R.drawable.square_i;
+                break;
+            case 9:
+                returnedId = R.drawable.square_j;
+                break;
+            case 10:
+                returnedId = R.drawable.square_k;
+                break;
+            case 11:
+                returnedId = R.drawable.square_l;
+                break;
+            case 12:
+                returnedId = R.drawable.square_m;
+                break;
+            case 13:
+                returnedId = R.drawable.square_n;
+                break;
+            case 14:
+                returnedId = R.drawable.square_o;
+                break;
+            case 15:
+                returnedId = R.drawable.square_p;
+                break;
+            case 16:
+                returnedId = R.drawable.square_q;
+                break;
+            case 17:
+                returnedId = R.drawable.square_r;
+                break;
+            case 18:
+                returnedId = R.drawable.square_s;
+                break;
+            case 19:
+                returnedId = R.drawable.square_t;
+                break;
+            case 20:
+                returnedId = R.drawable.square_u;
+                break;
+            case 21:
+                returnedId = R.drawable.square_v;
+                break;
+            case 22:
+                returnedId = R.drawable.square_w;
+                break;
+            case 23:
+                returnedId = R.drawable.square_x;
+                break;
+            case 24:
+                returnedId = R.drawable.square_y;
+                break;
+            case 25:
+                returnedId = R.drawable.square_z;
+                break;
+            default:
+                returnedId = R.drawable.square_a;
+        }
+        return returnedId;
     }
 }
