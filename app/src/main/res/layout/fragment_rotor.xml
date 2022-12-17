@@ -1,14 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RotorFragment">
+    android:background="@color/background"
+    tools:context=".EnigmaFragment"
+    android:id="@+id/parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/Rotor_Fragment" />
+    <ImageView
+        android:id="@+id/enigmaLogo"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:src="@drawable/enigmamachinebadge"
+        app:layout_constraintRight_toRightOf="@id/parent"
+        app:layout_constraintLeft_toLeftOf="@id/parent"
+        app:layout_constraintTop_toTopOf="@id/parent"/>
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/rotor1_vector"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/square_a"
+        app:layout_constraintRight_toLeftOf="@id/rotor2_vector"
+        app:layout_constraintTop_toBottomOf="@id/enigmaLogo" />
+
+    <ImageView
+        android:id="@+id/rotor2_vector"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/square_a"
+        app:layout_constraintLeft_toLeftOf="@id/enigmaLogo"
+        app:layout_constraintRight_toRightOf="@id/enigmaLogo"
+        app:layout_constraintTop_toBottomOf="@id/enigmaLogo"/>
+
+    <ImageView
+        android:id="@+id/rotor3_vector"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/square_a"
+        app:layout_constraintLeft_toRightOf="@id/rotor2_vector"
+        app:layout_constraintTop_toBottomOf="@id/enigmaLogo"/>
+
+
+
+    <Spinner
+        android:id="@+id/Rotor3_rotors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/rotor3_vector"
+        app:layout_constraintLeft_toLeftOf="@id/rotor3_vector"
+        app:layout_constraintRight_toRightOf="@id/rotor3_vector"
+        android:entries="@array/rotors"
+        android:padding="5dp"
+        android:background="@color/lamp_background"/>
+
+    <Spinner
+        android:id="@+id/Rotor3_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/Rotor3_rotors"
+        app:layout_constraintLeft_toLeftOf="@id/rotor3_vector"
+        app:layout_constraintRight_toRightOf="@id/rotor3_vector"
+        android:entries="@array/settings"
+        android:padding="5dp"
+        android:background="@color/lamp_background"/>
+
+    <Spinner
+        android:id="@+id/Rotor2_rotors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/rotor2_vector"
+        app:layout_constraintLeft_toLeftOf="@id/rotor2_vector"
+        app:layout_constraintRight_toRightOf="@id/rotor2_vector"
+        android:entries="@array/rotors"
+        android:padding="5dp"
+        android:background="@color/lamp_background"/>
+
+    <Spinner
+        android:id="@+id/Rotor2_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/Rotor2_rotors"
+        app:layout_constraintLeft_toLeftOf="@id/rotor2_vector"
+        app:layout_constraintRight_toRightOf="@id/rotor2_vector"
+        android:entries="@array/settings"
+        android:padding="5dp"
+        android:background="@color/lamp_background"/>
+
+    <Spinner
+        android:id="@+id/Rotor1_rotors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/rotor1_vector"
+        app:layout_constraintLeft_toLeftOf="@id/rotor1_vector"
+        app:layout_constraintRight_toRightOf="@id/rotor1_vector"
+        android:entries="@array/rotors"
+        android:padding="5dp"
+        android:background="@color/lamp_background"/>
+
+    <Spinner
+        android:id="@+id/Rotor1_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/Rotor1_rotors"
+        app:layout_constraintLeft_toLeftOf="@id/rotor1_vector"
+        app:layout_constraintRight_toRightOf="@id/rotor1_vector"
+        android:entries="@array/settings"
+        android:padding="5dp"
+        android:background="@color/lamp_background"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
